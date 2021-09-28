@@ -61,7 +61,8 @@ main {
 
 /* Gives card-like properties to container */
 .container {
-    width: 75%;
+    max-width: 75vw;
+    min-width: 50vw;
     background-color: black;
     border-radius: 10px;
     border-width: 3px;
@@ -72,24 +73,26 @@ main {
 #top-bar {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px;
     margin: 3px;
     border-bottom: 2px solid white;
 }
+
 #question {
-    float: left;
+    text-align: center;
 }
 
 #timer {
-    float:right;
+    text-align: center;
+    font-size: 115%;
 }
 
 #answer-grid {
     display: grid;
     grid-template-columns: repeat(2,auto);
     margin: 25px 5px;
-    gap: 10px;
+    gap: 30px;
 }
 
 .btn {
@@ -99,6 +102,7 @@ main {
     padding: 10px;
     border-radius: 5px;
     outline: none;
+
 }
 
 .btn:hover {
