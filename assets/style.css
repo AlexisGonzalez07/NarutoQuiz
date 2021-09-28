@@ -1,0 +1,130 @@
+/* Setting up background-color variables */
+:root {
+    --neutral: black;
+    --correct: green;
+    --wrong: red;
+}
+
+/* Adding default style and responsive page elemtns */
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--neutral);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+/* Styling header at top of page */
+header{
+    width: 98vw;
+    padding: 20px;
+    color: black;
+    background-color: white;
+    font-size: 150%;
+}
+
+/* Styling of page for correct answer */
+body.correct {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--correct);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+/* Styling of page for wrong anser */
+body.wrong {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--wrong);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+/* Aligns questions at the center of the page */
+main {
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+/* Gives card-like properties to container */
+.container {
+    width: 75%;
+    background-color: black;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: white;
+    box-shadow: 0 0 8px 2px;
+}
+
+#top-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 3px;
+    border-bottom: 2px solid white;
+}
+#question {
+    float: left;
+}
+
+#timer {
+    float:right;
+}
+
+#answer-grid {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    margin: 25px 5px;
+    gap: 10px;
+}
+
+.btn {
+    font-size: auto;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: white
+}
+
+btn.correct {
+    background-color: var(--correct);
+}
+
+btn.wrong {
+    background-color: var(--wrong);
+}
+
+#submit {
+    padding: 8px;
+    margin: 3px;
+    font-size: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bottom-btn {
+}
+
+.hide {
+    display: none;
+}
