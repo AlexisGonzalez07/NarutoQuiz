@@ -7,6 +7,8 @@ var body = $('body')
 var nextButton = $('#next-btn')
 var startButton = $('#bottom-btn')
 var score = 0
+var form = $('form')
+var choices = $(".answer-btn")
 var questionArray = [
     {
         question:"How was Minato Namikaze related to Naruto?",
@@ -37,6 +39,8 @@ var questionArray = [
     
     // Set listening event for start Game
     // Start game function
+    form.hide()
+
     function startGame(event){
         startButton.remove();
         nextButton.show();   
@@ -65,15 +69,21 @@ var questionArray = [
     function checkAnswer(selectedAnswer){
         //var selectedAnswer = this.value
         console.log(selectedAnswer)
-        if (currentQuestion + 1 === questionArray.length) {
-            alert('Game Over. Restarting');
+        if (currentQuestion + 1 === questionArray.length && selectedAnswer === questionArray[currentQuestion].answer) {
+            score++;
+            body.addClass("correct");
             clearInterval(timerInterval);
             timeEl.text('');
-            grid.empty()
+            grid.empty();
+            endGame();
             //Have to add scoring and local storage instead of alert
-        } 
-        console.log(selectedAnswer,questionArray[currentQuestion].answer)
-        if (selectedAnswer === questionArray[currentQuestion].answer) {
+        } else if (currentQuestion + 1 === questionArray.length && selectedAnswer !== questionArray[currentQuestion].answer) {
+            body.addClass("wrong");
+            clearInterval(timerInterval);
+            timeEl.text('');
+            grid.empty();
+            endGame();
+        } else if (selectedAnswer === questionArray[currentQuestion].answer) {
             score++;
             console.log(score)
             body.addClass("correct")
@@ -84,7 +94,12 @@ var questionArray = [
     }
 
     function endGame(){
-
+        body.removeClass();
+        grid.empty();
+        nextButton.hide();
+        question.text('Are you a Shinobi?');
+        timeEl.text('Your score: ' + score +'/5');
+        console.log("end")
     }
 
 var timerInterval;
