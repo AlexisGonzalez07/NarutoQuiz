@@ -6,7 +6,7 @@ In this project, I was tasked with developing a responsive quiz using HTML, CSS,
 
 ## Website Link
 Visit my website on GitHub Pages! Take the Naruto Uzumaki quiz. Are you a Shinobi?
-https://alexisgonzalez07.github.io/AG_Password-Generator/
+https://alexisgonzalez07.github.io/NarutoQuiz/
 
 ## Tasks Completed
 
