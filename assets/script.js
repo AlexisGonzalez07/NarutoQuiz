@@ -1,6 +1,6 @@
 var question = $("#question")
 var currentQuestion = 0
-var secondsLeft = 40
+var secondsLeft = 300
 var timeEl = $('#timer')
 var grid = $('#answer-grid')
 var body = $('body')
@@ -38,15 +38,16 @@ var questionArray = [
     // Set listening event for start Game
     // Start game function
     function startGame(event){
-        startButton.hide();
-        nextButton.show();  
+        startButton.remove();
+        nextButton.show();   
         updateQuiz();
+    }
 
     function updateQuiz() {
         body.removeClass();
         grid.empty()
         question.text('')
-        question.text(questionArray[currentQuestion].question)};
+        question.text(questionArray[currentQuestion].question);
         console.log(questionArray[currentQuestion].options.length)
         for (var i = 0; i < questionArray[currentQuestion].options.length; i++) { 
         let btn = document.createElement('button');
@@ -58,7 +59,7 @@ var questionArray = [
             currentQuestion++;
             })
             grid.append(btn);
-        } 
+        }}
     
     function checkAnswer(selectedAnswer){
         //var selectedAnswer = this.value
@@ -72,7 +73,8 @@ var questionArray = [
         } 
         console.log(selectedAnswer,questionArray[currentQuestion].answer)
         if (selectedAnswer === questionArray[currentQuestion].answer) {
-            // score variable +
+            score++;
+            console.log(score)
             body.addClass("correct")
             // setTimeout(function())
         } else {
@@ -80,10 +82,10 @@ var questionArray = [
         }
     }
 
-}
+var timerInterval;
 
     function timerCountdown(event) {
-        var timerInterval = setInterval(function(){
+        timerInterval = setInterval(function(){
         timeEl.text(secondsLeft + " seconds left");
         secondsLeft--;
     
@@ -93,22 +95,22 @@ var questionArray = [
             timeEl.text('')}
     
     }, 1000)}
+
+    // function timerCountdown() {
+    //     var timerInterval = setInterval(function(){
+    //     timeEl.textContent = secondsLeft + " seconds left";
+    //     secondsLeft--;
+    //     if(secondsLeft === 0) {
+    //         alert('Game Over. Restarting');
+    //         clearInterval(timerInterval);
+    //         timeEl.text('')}
     
-    function timerCountdown() {
-        var timerInterval = setInterval(function(){
-        timeEl.textContent = secondsLeft + " seconds left";
-        secondsLeft--;
-        if(secondsLeft === 0) {
-            alert('Game Over. Restarting');
-            clearInterval(timerInterval);
-            timeEl.text('')}
-    
-    }, 1000)}
+    // }, 1000)}
 
     startButton.on('click', timerCountdown)
     startButton.on('click', startGame)
     nextButton.hide()
-    
+    nextButton.on('click', updateQuiz)
     
     // check answer
 
