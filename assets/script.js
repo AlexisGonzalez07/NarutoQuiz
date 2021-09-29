@@ -1,7 +1,7 @@
 var question = $("#question")
 var currentQuestion = 0
-var secondsLeft = 300
-var timeEl = $('#timer')
+var secondsLeft = 100
+let timeEl = $('#timer')
 var grid = $('#answer-grid')
 var body = $('body')
 var nextButton = $('#next-btn')
@@ -54,6 +54,7 @@ var questionArray = [
         btn.textContent = questionArray[currentQuestion].options[i]
         btn.value=questionArray[currentQuestion].options[i]
         btn.classList.add("btn")
+        btn.classList.add("answer-btn")
         btn.addEventListener('click', function(){
             checkAnswer(this.value);
             currentQuestion++;
@@ -80,6 +81,10 @@ var questionArray = [
         } else {
             body.addClass("wrong")
         }
+    }
+
+    function endGame(){
+
     }
 
 var timerInterval;
